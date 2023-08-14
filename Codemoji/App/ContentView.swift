@@ -15,22 +15,27 @@ struct ContentView: View {
                 
                 Color.clear.ignoresSafeArea()
                 
+                
                 VStack {
+                    Spacer()
                     VStack(spacing: 16) {
-                        NavigationLink(destination: HtmlView(codingLanguage: "HTML")) {
+                        NavigationLink(destination:
+                                        CardListView(selectedLanguage: "HTML")) {
                             TagView(text: "HTML")
                         }
-                        NavigationLink(destination: HtmlView(codingLanguage: "JavaScript")) {
+                        NavigationLink(destination: CardListView(selectedLanguage: "JavaScript")) {
                             TagView(text: "JavaScript")
                         }
-                        NavigationLink(destination: HtmlView(codingLanguage: "CSS")) {
+                        NavigationLink(destination: CardListView(selectedLanguage: "CSS")) {
                             TagView(text: "CSS")
                         }
-                        NavigationLink(destination: HtmlView(codingLanguage: "Swift")) {
-                            TagView(text: "Swift")
-                        }
-                    }.padding()
+                        
+                    }
+                    
+                    Image("CodeGreener").resizable().aspectRatio(contentMode: .fit).opacity(0.3)
+                        .padding(.bottom)
                 }
+                
             }
         }
         .tint(.black)
@@ -41,7 +46,7 @@ struct TagView: View {
     var text: String
 
     var body: some View {
-        RoundedRectangle(cornerRadius: 8).foregroundColor(Color(.quaternaryLabel))
+        RoundedRectangle(cornerRadius: 8).foregroundColor(Color.green.opacity(0.2))
             .overlay {
                 Text(text)
                     .foregroundColor(.black)
